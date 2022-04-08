@@ -1,0 +1,296 @@
+html,
+body,
+input,
+textarea,
+button {
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+
+input[type="submit"],
+button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+select {
+	border-radius: 0;
+	background: none;
+	border: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+
+	&::-ms-expand {
+		display: none;
+	}
+}
+
+select+.select-icon {
+	float: left;
+	width: 19px;
+	height: 11px;
+	margin: 13px 0 0 -28px;
+	// background:url($sprite-path) -318px -360px no-repeat;
+	pointer-events: none;
+}
+
+select:hover+.select-icon {
+	opacity: 0.7;
+}
+
+
+a,
+input[type='submit'],
+button,
+.button {
+	cursor: pointer;
+	transition: color 100ms, background-color 100ms, border-color 100ms;
+}
+
+.hide {
+	display: none !important;
+}
+
+.hidden {
+	display: none;
+}
+
+.no-select {
+	user-select: none !important;
+	-o-user-select: none !important;
+	-moz-user-select: none !important;
+	-webkit-user-select: none !important;
+	-ms-user-select: none !important;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+	margin: 10px 0 10px 0;
+}
+
+::-webkit-scrollbar-track {
+	background: #ebebeb;
+
+	// @include respond-to('tablet') {
+	// 	background: #ebebeb;
+	// }
+
+	// @include respond-to('mobile') {
+	// 	background: #ebebeb;
+	// }
+}
+
+::-webkit-scrollbar-thumb {
+	background: #000000;
+	transition: background-color 200ms;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #000000;
+}
+
+.center-column {
+	position: relative;
+	max-width: 1320px;
+	margin: 0 auto;
+	padding: 0 60px;
+
+	@include clear-after;
+
+	@include respond-to(tablet) {
+		padding: 0 30px;
+	}
+
+	@include respond-to(mobile) {
+		padding: 0 20px;
+	}
+}
+
+// Swiper Slider Default Css
+
+.swiper-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-transition-property: -webkit-transform;
+	transition-property: -webkit-transform;
+	transition-property: transform;
+	transition-property: transform, -webkit-transform;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.swiper-slide {
+	-ms-flex: 0 0 auto;
+	-ms-flex-negative: 0;
+	flex-shrink: 0;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+// fade on scroll
+
+.fade-on-scroll {
+	.home & {
+		visibility: hidden;
+		transform: translate(0, 50px);
+		opacity: 0;
+		transition-property: visibility, transform, opacity;
+		transition-timing-function: ease;
+		transition-duration: 1000ms;
+	}
+
+	&.visible {
+		visibility: visible;
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+
+	.no-js & {
+		visibility: visible !important;
+		opacity: 1 !important;
+	}
+}
+
+.collapsed {
+	display: none;
+}
+
+.expand-button,
+.collapse-button {
+	width: 160px;
+	height: 60px;
+	line-height: 30px;
+	font-size: 12px;
+	color: #0f7899;
+	border: solid 1px #0f7899;
+	background: none;
+
+	&:hover {
+		background: #0f7899;
+	}
+}
+
+// SCROLLABLE
+
+.scrollable {
+	position: relative;
+	height: 100%;
+
+	.viewport {
+		height: 100%;
+		overflow: hidden;
+		position: relative;
+		z-index: 1;
+	}
+
+	.overview {
+		position: relative;
+		width: 100%;
+	}
+
+	.scrollbar {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 6px;
+		height: 100%;
+		overflow: hidden;
+		background: #343434;
+		background-clip: padding-box;
+		z-index: 2;
+
+		&.disable {
+			display: none;
+		}
+
+		.poi & {
+			background: #fff;
+			border: 1px solid #eee;
+			overflow: visible;
+			width: 2px;
+		}
+
+		.track {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+
+			.poi & {
+				overflow: visible;
+			}
+		}
+
+		.thumb {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 6px;
+			overflow: hidden;
+			background: #D6AD85;
+			transition: background 0.2s;
+			cursor: pointer;
+
+			&:hover {
+				background: rgba(255, 255, 255, 1);
+			}
+
+			.poi & {
+				border-radius: 8px;
+				background: #E1E1E1;
+				width: 8px;
+				left: -3px;
+			}
+		}
+	}
+}
+
+// ADA
+
+.visuallyhidden {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px);
+	/* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+	padding: 0 !important;
+	border: 0 !important;
+	height: 1px !important;
+	width: 1px !important;
+	overflow: hidden;
+}
+
+.keyboard-navigation {
+	* {
+		transition: none !important;
+	}
+
+	*:focus {
+		box-shadow: inset 0 0 1px 2px rgba(206, 57, 20, 0.86);
+	}
+}
+
+.image-text-ada,
+.title-ada {
+	width: 0;
+	height: 0;
+	font-size: 0;
+	text-indent: -9999px;
+	overflow: hidden;
+	display: none;
+}
+
+.hidden-label {
+	width: 0;
+	height: 0;
+	font-size: 0;
+	text-indent: -9999em;
+	overflow: hidden;
+}

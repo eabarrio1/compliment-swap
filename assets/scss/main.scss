@@ -1,0 +1,170 @@
+// Usage:
+// .element {
+//     @include mixin-name;
+//     OR
+//     @include mixin-name(arguments);
+// }
+
+@mixin font-face($font-name, $font-path, $font-weight: normal, $font-style: normal) {
+	@font-face {
+		font-family: '#{$font-name}';
+		src:url('#{$font-path}.woff2') format('woff2'),
+		url('#{$font-path}.woff') format('woff');
+		font-weight: $font-weight;
+		font-display: swap;
+		font-style: $font-style;
+	}
+}
+
+@mixin clear-after {
+	&:after {
+		clear: both;
+		content: '';
+		display: table;
+	}
+}
+
+@mixin overflow-ellipsis {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+@mixin vertical-align {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+//@mixin respond-to ($screen-size) {
+//	@if $screen-size == 'wide screens' {
+//		@media (min-width: 1440px) { @content; }
+//	} @else { @warn "Wrong screen size!"; }
+//}
+// Fonts
+$fonts-path: '../fonts/';
+$default-font: 'Montserrat',
+sans-serif;
+$nellasue-font: 'Nella Sue',
+sans-serif;
+
+// Images
+$sprite-path: '../images/sprite.svg';
+$common-path: '../images/common.svg';
+
+// Dimensions
+
+$center-column-width: 980px;
+
+$transition: 350ms ease-in-out;
+$cubic-transition: 500ms cubic-bezier(1, 0, 0, 1);
+
+$break-small: 0;
+$break-mobile-small: 450px;
+$break-mobile: 768px;
+$break-tablet: 980px;
+$break-large: 1320px;
+$break-extra-large: 1800px;
+
+$break-tablet-height: 768px;
+$break-desktop-height: 1500px;
+
+$break-menu: 1400px;
+
+@mixin respond-to($media) {
+
+	@if $media==small-screens {
+		@media only screen and (min-width: $break-small) and (max-width: $break-tablet - 1) {
+			@content;
+		}
+	}
+
+	@if $media==mobile {
+		@media only screen and (min-width: 0px) and (max-width: $break-mobile - 1) {
+			@content;
+		}
+	}
+
+	@else if $media==tablet {
+		@media only screen and (min-width: $break-mobile) and (max-width: $break-tablet - 1) {
+			@content;
+		}
+	}
+
+	@else if $media==large {
+		@media only screen and (min-width: $break-large) {
+			@content;
+		}
+	}
+
+	@else if $media==tablet-height {
+		@media only screen and (min-height: 0px) and (max-height: $break-tablet-height) {
+			@content;
+		}
+	}
+
+	@else if $media==desktop-height {
+		@media only screen and (min-height: 0px) and (max-height: $break-desktop-height) {
+			@content;
+		}
+	}
+
+	@else if $media==landscape {
+		@media only screen and (min-device-width: $break-mobile) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+			@content;
+		}
+	}
+
+	@else if $media==feeds-mobile-small {
+		@media only screen and (min-width: 0px) and (max-width: $break-mobile-small - 1) {
+			@content;
+		}
+	}
+
+	@else if $media==feeds-mobile {
+		@media only screen and (min-width: $break-mobile-small) and (max-width: $break-mobile - 1) {
+			@content;
+		}
+	}
+
+	@else if $media==feeds-tablet {
+		@media only screen and (min-width: $break-mobile) and (max-width: $break-tablet - 1) {
+			@content;
+		}
+	}
+
+	@else if $media==feeds-medium {
+		@media only screen and (min-width: $break-tablet) and (max-width: $break-large - 1) {
+			@content;
+		}
+	}
+
+	@else if $media==feeds-large {
+		@media only screen and (min-width: $break-extra-large) {
+			@content;
+		}
+	}
+
+	@else if $media==facto {
+		@media only screen and (min-width: 0) and (max-width: $break-menu - 1) {
+			@content;
+		}
+	}
+
+	@else if $media==null-to-large {
+		@media only screen and (min-width: 0) and (max-width: $break-large) {
+			@content;
+		}
+	}
+
+
+}
+
+@import './assets/functions';
+
+@import './assets/common';
+@import './assets/content';
+@import './assets/reset';
+@import './assets/variables';
