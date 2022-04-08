@@ -1,0 +1,45 @@
+// Usage:
+// .element {
+//     @include mixin-name;
+//     OR
+//     @include mixin-name(arguments);
+// }
+
+@mixin font-face($font-name, $font-path, $font-weight: normal, $font-style: normal) { 
+	@font-face {
+		font-family: '#{$font-name}';
+		src:url('#{$font-path}.woff2') format('woff2'),
+			url('#{$font-path}.woff') format('woff');
+		font-weight: $font-weight;
+		font-display: swap;
+		font-style: $font-style;
+	}
+}
+
+@mixin clear-after {
+	&:after {
+		clear: both;
+		content: '';
+		display: table;
+	}
+}
+
+@mixin overflow-ellipsis {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+@mixin vertical-align {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+//@mixin respond-to ($screen-size) {
+//	@if $screen-size == 'wide screens' {
+//		@media (min-width: 1440px) { @content; }
+//	} @else { @warn "Wrong screen size!"; }
+//}
