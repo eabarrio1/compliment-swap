@@ -74,13 +74,13 @@ button,
 ::-webkit-scrollbar-track {
 	background: #ebebeb;
 
-	// @include respond-to('tablet') {
-	// 	background: #ebebeb;
-	// }
+	@include respond-to('tablet') {
+		background: #ebebeb;
+	}
 
-	// @include respond-to('mobile') {
-	// 	background: #ebebeb;
-	// }
+	@include respond-to('mobile') {
+		background: #ebebeb;
+	}
 }
 
 ::-webkit-scrollbar-thumb {
